@@ -1,0 +1,68 @@
+header {
+  background-color: #954508;
+}
+header,
+main {
+  padding: 1em 3em;
+  font-size: 1.2em;
+}
+header nav a:hover {
+  cursor: pointer;
+  background-color: #c97b0c;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+header nav a {
+  padding: 0.2em 2em;
+  margin: 0em 1em;
+  color: white;
+  text-decoration: none;
+}
+header nav a.active {
+  background-color: #c97b0c;
+}
+body {
+  background-image: url('./images/hamsterbg1.jpg');
+  height: 100vh;
+  background-size: cover;
+}
+.footer {
+  background-color: #954508;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
+.footer p {
+  text-align: center;
+}
+
+.home,
+.battle {
+  float: right;
+  max-width: 50vh;
+  margin-right: 40vh;
+}
+.home {
+  background-color: antiquewhite;
+  opacity: 0.5;
+  color: black;
+  padding: 2em;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
+.hamster img {
+  width: 7em;
+  height: 7em;
+}
+
+.hamster {
+  background-color: #c97b0c;
+  text-align: center;
+  max-width: 20em;
+  border-radius: 0.5em;
+  padding: 1em;
+}
