@@ -1,4 +1,4 @@
-export interface HamsterTest {
+export interface Hamster {
   name: string;
   age: number;
   favFood: string;

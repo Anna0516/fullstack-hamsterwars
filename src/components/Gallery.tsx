@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react"
 import { Hamster } from '../models/Hamster'
+import { fixUrl } from "../utils"
 
 const Gallery = () => {
   const [data, setData] = useState<null | Hamster[]>(null)
 
   useEffect(() => {
     async function getData() {
-      const response: Response = await fetch('http://localhost:1975/hamsters/')
+      const response: Response = await fetch(fixUrl('/hamsters/'))
       const apiData: any = await response.json()
 
       setData(apiData as Hamster[])

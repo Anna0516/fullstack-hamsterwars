@@ -12,7 +12,7 @@ interface Hamster {
   id: string;
 }
 
-const TodaysHamster = () => {
+const HamsterOfTheDay = () => {
   const [data, setData] = useState<null | Hamster>(null)
 
   useEffect(() => {
@@ -27,14 +27,14 @@ const TodaysHamster = () => {
   }, [])
 
   return (
-    <div className="gallery">
+    <div className="hamster-of-the-day">
 
       {data ?
         <div className="hamster">
-
+          <h3>Dagens hamster:</h3>
           <img src={data.imgName} />
           <h3>{data.name}</h3>
-          <p>Ålder: {data.age} år</p>
+          <p>Favoritsysselsättning: {data.loves} </p>
         </div>
         : <p>Väntar på dagens favorithamster</p>}
 
@@ -44,6 +44,6 @@ const TodaysHamster = () => {
   )
 
 }
-export default TodaysHamster
+export default HamsterOfTheDay
 
 /* http://localhost:1975/hamsters/random */

@@ -1,12 +1,15 @@
-import TestFetch from "./TestFetch"
-import TodaysHamster from "./TodaysHamster"
+
+import HamsterOfTheDay from "./HamsterOfTheDay"
 
 const Home = () => (
   <div className="home">
-    <h3>Hamsterwars</h3>
-    <p>Text om Hamsterwars kommer här.</p>
-    <TodaysHamster />
-    <TestFetch />
+    <div className="home-message">
+      <h3>Välkommen till Hamsterwars!</h3>
+      <p >Om du alltid längtat efter att få jämföra hamstrar har du kommit alldeles rätt. Må den sötaste hamstern vinna!</p>
+    </div>
+
+    <HamsterOfTheDay />
+
   </div>
 )
 export default Home
