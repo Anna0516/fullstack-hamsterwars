@@ -1,5 +1,4 @@
 .battle {
-  display: flex;
   float: right;
   min-width: 60vw;
 }
@@ -24,6 +23,10 @@
   max-width: 20em;
   border-radius: 0.5em;
   padding: 1em;
+  display: block;
+}
+.battle .voting {
+  display: flex;
 }
 body {
   background-image: url('./images/hamsterbg1.jpg');
@@ -54,7 +57,8 @@ body {
   height: 8em;
 }
 
-.hamster {
+.hamster,
+.add-hamster {
   background-color: #c97b0c;
   text-align: center;
 

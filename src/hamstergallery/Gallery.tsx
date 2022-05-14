@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Hamster } from '../models/Hamster'
 import { fixUrl } from "../utils"
+import AddHamster from "./AddHamster"
 
 const Gallery = () => {
   const [data, setData] = useState<null | Hamster[]>(null)
@@ -17,12 +18,15 @@ const Gallery = () => {
   }, [])
 
   return (
+
     <div className="gallery">
+      <AddHamster />
 
       {data ? data.map(hamster => (
         <div key={hamster.id} className="hamster">
 
-          <img src={hamster.imgName} />
+          <img src={fixUrl(`/img/${hamster.imgName}`)} />
+
           <h3>{hamster.name}</h3>
           <p>Ålder: {hamster.age} år</p>
         </div>
@@ -35,3 +39,5 @@ const Gallery = () => {
 
 }
 export default Gallery
+
+// <img src={fixUrl('img/hamster-1.jpg')} />

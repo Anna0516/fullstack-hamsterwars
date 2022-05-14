@@ -11,6 +11,8 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+const distPath = path.join(__dirname, '/../dist/')
+console.log('distpath', distPath)
 // Middleware
 
 // CORS öppnar vårt projekt så det kan användas från andra domäner
@@ -18,7 +20,9 @@ app.use(cors())
 // Serve static files in this folder
 app.use(express.static(path.join(__dirname, 'img')))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, '/../dist')))
+app.use(express.static(distPath))
+
+app.use('/img', express.static(path.join(__dirname, '/img')))
 // Parse request body
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: true }))
@@ -30,6 +34,10 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/hamsters', hamsters)
+// Övriga endpoints för att funka med react router i frontend
+app.all('*', (req, res) => {
+  res.sendFile(distPath + 'index.html')
+})
 
 // Starta server
 app.listen(PORT, () => {
