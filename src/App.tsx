@@ -6,6 +6,7 @@ import Gallery from './hamstergallery/Gallery'
 
 import Footer from './components/Footer'
 import './App.css'
+import SingleHamster from './components/SingleHamster'
 
 const App = () => {
 
@@ -24,7 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/battle" element={<BattlePage />} />
           <Route path="/gallery" element={<Gallery />} />
-
+          <Route path="/singlehamster/:id" element={<SingleHamster />} />
           <Route path="/" element={<Home />} />
         </Routes>
       </main>

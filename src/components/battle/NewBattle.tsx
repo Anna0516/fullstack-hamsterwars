@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { fixUrl } from "../../utils"
 import { Hamster } from "../../models/Hamster"
+import { setFlagsFromString } from "v8"
 
 const NewBattle = () => {
   const [firstHamster, setFirstHamster] = useState<null | Hamster>(null)
@@ -15,9 +16,84 @@ const NewBattle = () => {
   if (winningHamster === FIRST) {
     winningHamsterMessage = `Du röstade på Hamster nr 1`
     console.log('hamster 1 vann')
-  } else if (winningHamster === SECOND) {
+    if (firstHamster != null) {
+      let newWins = firstHamster.wins + 1
+      let newGames = firstHamster.games + 1
+
+      const putWinData = {
+        wins: newWins,
+        games: newGames
+      }
+      fetch(fixUrl(`/hamsters/${firstHamster.id}`), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(putWinData),
+
+      })
+      console.log('hamster 1 updated')
+    }
+    if (secondHamster != null) {
+      let newDefeats = secondHamster.defeats + 1
+      let newGames = secondHamster.games + 1
+
+      const putDefeatData = {
+        defeats: newDefeats,
+        games: newGames
+      }
+      fetch(fixUrl(`/hamsters/${secondHamster.id}`), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(putDefeatData),
+
+      })
+      console.log('hamster 2 updated')
+    }
+
+  }
+
+  else if (winningHamster === SECOND) {
     winningHamsterMessage = `Du röstade på Hamster nr 2`
     console.log('hamster 2 vann')
+    if (secondHamster != null) {
+      let newWins = secondHamster.wins + 1
+      let newGames = secondHamster.games + 1
+
+      const putWinData = {
+        wins: newWins,
+        games: newGames
+      }
+      fetch(fixUrl(`/hamsters/${secondHamster.id}`), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(putWinData),
+
+      })
+      console.log('hamster 1 updated')
+    }
+    if (firstHamster != null) {
+      let newDefeats = firstHamster.defeats + 1
+      let newGames = firstHamster.games + 1
+
+      const putDefeatData = {
+        defeats: newDefeats,
+        games: newGames
+      }
+      fetch(fixUrl(`/hamsters/${firstHamster.id}`), {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(putDefeatData),
+
+      })
+      console.log('hamster 2 updated')
+    }
   }
 
   useEffect(() => {
@@ -41,30 +117,6 @@ const NewBattle = () => {
     getData()
 
   }, [])
-  //Funkar ej...
-  /* const voteFirstHamster = (id: string) => {
-     fetch(fixUrl(`/hamsters/${id}`), {
-       body: JSON.stringify({
-         wins: +1
-       }),
-       headers: {
-         "Content-Type": "application/json",
-       },
-       method: "PUT",
-     }).then((result) => {
-       console.log(result)
-       return result.json()
-     }).then(json => {
-       console.log(json)
-       setWin({ wins: json })
-     })
-     console.log(`Hamster nr 1 har vunnit`)
-   }
-   /*
-    const voteSecondHamster = () => {
-      console.log('Hamster 2 vinner')
-      setWinningHamster(winningHamster = secondHamster)
-    } */
 
   return (
 
@@ -94,5 +146,7 @@ const NewBattle = () => {
 
 }
 export default NewBattle
+
+
 
 //<button onClick={() => voteFirstHamster}>VoteFirst</button>
