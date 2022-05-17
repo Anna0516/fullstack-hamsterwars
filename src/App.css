@@ -48,6 +48,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 1em;
+  margin-bottom: 2em;
 }
 .gallery .hamster:hover {
   transform: translateY(0.4em);
@@ -98,7 +99,8 @@ header nav a.active {
   color: white;
 }
 
-.single-hamster {
+.single-hamster,
+.winning-hamster {
   color: white;
   background-color: #c97b0c;
   text-align: center;
@@ -107,5 +109,13 @@ header nav a.active {
   max-width: 25em;
 }
 .single-hamster img {
+  max-width: 15em;
+}
+
+.winning-hamster {
+  margin-bottom: 3em;
+}
+
+.winning-hamster img {
   max-width: 15em;
 }
