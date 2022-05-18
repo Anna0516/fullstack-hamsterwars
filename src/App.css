@@ -24,6 +24,7 @@
   border-radius: 0.5em;
   padding: 1em;
   display: block;
+  margin-left: 25vh;
 }
 .battle .voting {
   display: flex;
@@ -114,6 +115,7 @@ header nav a.active {
 
 .winning-hamster {
   margin-bottom: 3em;
+  margin-left: 25vh;
 }
 
 .winning-hamster img {
