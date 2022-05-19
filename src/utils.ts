@@ -14,6 +14,7 @@ export { fixUrl }
 function allImgNames(imgName: string) {
   if (imgName.startsWith('https')){
     return imgName
+
   } else {
     return fixUrl((`/img/${imgName}`))
   }

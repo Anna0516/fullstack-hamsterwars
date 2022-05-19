@@ -5,6 +5,7 @@ import { allImgNames } from "../utils"
 import { useParams } from 'react-router-dom'
 import AddHamster from "./AddHamster"
 import { Link } from 'react-router-dom'
+import DeleteHamster from "./DeleteHamster"
 
 const Gallery = () => {
   const [data, setData] = useState<null | Hamster[]>(null)
@@ -38,7 +39,9 @@ const Gallery = () => {
           <h3>{hamster.name}</h3>
           <p>Ålder: {hamster.age} år</p>
           <Link to={'/singlehamster/' + hamster.id}>Mer info</Link>
+          <DeleteHamster hamsterid={hamster.id} />
         </div>
+
       )) : <p>Väntar på hamstrar</p>}
 
 

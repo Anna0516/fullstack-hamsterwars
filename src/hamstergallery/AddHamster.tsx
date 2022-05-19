@@ -9,6 +9,7 @@ const AddHamster = () => {
   const [loves, setLoves] = useState<string>('')
   const [imgName, setImgName] = useState<string>('')
 
+
   const newHamster: Hamster = {
     name: name,
     age: Number(age),
@@ -25,12 +26,13 @@ const AddHamster = () => {
   const ageIsValid = newHamster.age >= 1 && Number.isInteger(newHamster.age) === true
   const favFoodIsValid = newHamster.favFood !== ''
   const lovesIsValid = newHamster.loves !== ''
-
-  const formIsValid = nameIsValid && ageIsValid && favFoodIsValid && lovesIsValid
+  const imgNameIsValid = newHamster.imgName !== ''
+  const formIsValid = nameIsValid && ageIsValid && favFoodIsValid && lovesIsValid && imgNameIsValid
 
   //måste kompletteras med användarvänliga felmeddelanden
 
   const handleAddHamster = () => {
+
     fetch(fixUrl('/hamsters'), {
       method: 'POST',
       headers: {
@@ -39,6 +41,11 @@ const AddHamster = () => {
       },
       body: JSON.stringify(newHamster)
     })
+    setName('')
+    setAge('')
+    setFavFood('')
+    setLoves('')
+    setImgName('')
     // Använd try/catch och await om du behöver hantera eventuella fel
   }
 
