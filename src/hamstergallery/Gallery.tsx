@@ -10,7 +10,6 @@ import DeleteHamster from "./DeleteHamster"
 const Gallery = () => {
   const [data, setData] = useState<null | Hamster[]>(null)
   const [hamsterId, setHamsterId] = useState<string>('')
-  const [singleHamster, setSingleHamster] = useState<null | Hamster>(null)
 
   useEffect(() => {
     async function getData() {
@@ -22,9 +21,6 @@ const Gallery = () => {
     getData()
     console.log(data)
   }, [])
-  const handleSingleHamster = () => {
-
-  }
 
   return (
 

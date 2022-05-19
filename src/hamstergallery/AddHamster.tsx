@@ -2,13 +2,13 @@ import { Hamster } from '../models/Hamster'
 import { useState } from 'react'
 import { fixUrl } from '../utils'
 
+
 const AddHamster = () => {
   const [name, setName] = useState<string>('')
   const [age, setAge] = useState<string>('')
   const [favFood, setFavFood] = useState<string>('')
   const [loves, setLoves] = useState<string>('')
   const [imgName, setImgName] = useState<string>('')
-
 
   const newHamster: Hamster = {
     name: name,
@@ -29,7 +29,7 @@ const AddHamster = () => {
   const imgNameIsValid = newHamster.imgName !== ''
   const formIsValid = nameIsValid && ageIsValid && favFoodIsValid && lovesIsValid && imgNameIsValid
 
-  //måste kompletteras med användarvänliga felmeddelanden
+  //användarvänliga felmeddelanden?
 
   const handleAddHamster = () => {
 
@@ -41,12 +41,13 @@ const AddHamster = () => {
       },
       body: JSON.stringify(newHamster)
     })
+
     setName('')
     setAge('')
     setFavFood('')
     setLoves('')
     setImgName('')
-    // Använd try/catch och await om du behöver hantera eventuella fel
+
   }
 
   return (

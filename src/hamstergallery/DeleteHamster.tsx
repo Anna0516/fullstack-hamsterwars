@@ -14,6 +14,7 @@ const DeleteHamster = ({ hamsterid }: Props) => {
       },
       body: null
     })
+
     console.log('hamster raderad')
   }
 
