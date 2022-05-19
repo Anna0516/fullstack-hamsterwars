@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { fixUrl } from "../utils"
+import { fixUrl, allImgNames } from "../utils"
 import { Hamster } from "../models/Hamster"
 
 
@@ -23,7 +23,7 @@ const HamsterOfTheDay = () => {
       {data ?
         <div className="hamster">
           <h3>Dagens hamster:</h3>
-          <img src={fixUrl(`/img/${data.imgName}`)} />
+          <img src={allImgNames(data.imgName)} />
           <h3>{data.name}</h3>
           <p>Favoritsysselsättning: {data.loves} </p>
         </div>

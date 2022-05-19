@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { fixUrl } from "../../utils"
+import { fixUrl, allImgNames } from "../../utils"
 import { Hamster } from "../../models/Hamster"
 
 const NewBattle = () => {
@@ -138,7 +138,7 @@ const NewBattle = () => {
       <div className="voting">
         {firstHamster && secondHamster ? //Tävlande nr 1
           <div className="hamster">
-            <img src={fixUrl(`/img/${firstHamster.imgName}`)} />
+            <img src={allImgNames(firstHamster.imgName)} />
             <h3>{firstHamster.name}</h3>
             {doesExist1 ? <div>
               <p>Vinster: {winner?.wins}</p>
@@ -152,7 +152,7 @@ const NewBattle = () => {
 
         {firstHamster && secondHamster ? //Tävlande nr 2
           <div className="hamster">
-            <img src={fixUrl(`/img/${secondHamster.imgName}`)} />
+            <img src={allImgNames(secondHamster.imgName)} />
             <h3>{secondHamster.name}</h3>
             {doesExist2 ? <div>
               <p>Vinster: {winner?.wins}</p>
@@ -169,7 +169,7 @@ const NewBattle = () => {
         <div className="winning-hamster">
           <h2>Vi har en vinnare!</h2>
           <button onClick={StartNewGame}>Ny match</button>
-          <img src={fixUrl(`/img/${winner.imgName}`)} />
+          <img src={allImgNames(winner.imgName)} />
           <p>{winner.name} är  {winner.age} år, äter {winner.favFood}, och älskar att {winner.loves}.</p>
           <p>({winner.wins} vinst/er, {winner.defeats} förlust/er, {winner.games} match/er)</p>
 

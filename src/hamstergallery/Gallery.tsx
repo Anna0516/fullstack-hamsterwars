@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Hamster } from '../models/Hamster'
 import { fixUrl } from "../utils"
+import { allImgNames } from "../utils"
 import { useParams } from 'react-router-dom'
 import AddHamster from "./AddHamster"
 import { Link } from 'react-router-dom'
@@ -24,7 +25,6 @@ const Gallery = () => {
 
   }
 
-
   return (
 
     <div className="gallery">
@@ -33,7 +33,7 @@ const Gallery = () => {
       {data ? data.map(hamster => (
         <div key={hamster.id} className="hamster">
 
-          <img src={fixUrl(`/img/${hamster.imgName}`)} />
+          <img src={allImgNames(hamster.imgName)} />
 
           <h3>{hamster.name}</h3>
           <p>Ålder: {hamster.age} år</p>

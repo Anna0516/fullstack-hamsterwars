@@ -7,14 +7,14 @@ const AddHamster = () => {
   const [age, setAge] = useState<string>('')
   const [favFood, setFavFood] = useState<string>('')
   const [loves, setLoves] = useState<string>('')
-  //const [imgName, setImgName] = useState<string>('')
+  const [imgName, setImgName] = useState<string>('')
 
   const newHamster: Hamster = {
     name: name,
     age: Number(age),
     favFood: favFood,
     loves: loves,
-    imgName: '',
+    imgName: imgName,
     wins: 0,
     defeats: 0,
     games: 0,
@@ -49,7 +49,10 @@ const AddHamster = () => {
       <input type="text" placeholder='Hamsterns ålder' onChange={event => setAge(event.target.value)} value={age} />
       <input type="text" placeholder='Hamsterns favoritmat' onChange={event => setFavFood(event.target.value)} value={favFood} />
       <input type="text" placeholder='Hamstern älskar...' onChange={event => setLoves(event.target.value)} value={loves} />
-      <button disabled={!formIsValid} onClick={handleAddHamster}>Lägg till hamster!</button>
+      <input type="text" placeholder='Bild url' onChange={event => setImgName(event.target.value)} value={imgName} />
+      <div>
+        <button disabled={!formIsValid} onClick={handleAddHamster}>Lägg till hamster!</button>
+      </div>
     </div>
   )
 }

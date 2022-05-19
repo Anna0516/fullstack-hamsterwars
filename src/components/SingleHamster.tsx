@@ -2,7 +2,7 @@ import { Hamster } from "../models/Hamster"
 import { useParams } from "react-router-dom"
 import { Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { fixUrl } from "../utils"
+import { fixUrl, allImgNames } from "../utils"
 
 const SingleHamster = () => {
   const [singleHamster, setSingleHamster] = useState<null | Hamster>(null)
@@ -24,7 +24,7 @@ const SingleHamster = () => {
       {singleHamster ?
 
         <>
-          <img src={fixUrl(`/img/${singleHamster.imgName}`)} />
+          <img src={allImgNames(singleHamster.imgName)} />
           <h3>{singleHamster.name}</h3>
           <p>Ålder: {singleHamster.age} år</p>
           <p>Äter: {singleHamster.favFood}</p>
