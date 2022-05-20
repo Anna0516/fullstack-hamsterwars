@@ -1,6 +1,8 @@
 import { Hamster } from '../models/Hamster'
 import { useState } from 'react'
 import { fixUrl } from '../utils'
+import { useRecoilState } from 'recoil'
+import HamsterAtom from '../atoms/HamsterAtom'
 
 
 const AddHamster = () => {
@@ -9,6 +11,7 @@ const AddHamster = () => {
   const [favFood, setFavFood] = useState<string>('')
   const [loves, setLoves] = useState<string>('')
   const [imgName, setImgName] = useState<string>('')
+  const [data, setData] = useRecoilState<null | Hamster[]>(HamsterAtom)
 
   const newHamster: Hamster = {
     name: name,
@@ -31,9 +34,9 @@ const AddHamster = () => {
 
   //användarvänliga felmeddelanden?
 
-  const handleAddHamster = () => {
+  const handleAddHamster = async () => {
 
-    fetch(fixUrl('/hamsters'), {
+    const response: Response = await fetch(fixUrl('/hamsters'), {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -41,7 +44,15 @@ const AddHamster = () => {
       },
       body: JSON.stringify(newHamster)
     })
+    if (response.status === 200) {
+      async function getData() {
+        const response: Response = await fetch(fixUrl('/hamsters/'))
+        const apiData: any = await response.json()
 
+        setData(apiData as Hamster[])
+      }
+      getData()
+    }
     setName('')
     setAge('')
     setFavFood('')

@@ -61,7 +61,12 @@ body {
 
 .hamster,
 .add-hamster {
-  background-color: #c97b0c;
+  background: radial-gradient(
+    circle,
+    rgba(149, 69, 8, 1) 0%,
+    rgba(201, 123, 0, 1) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
   text-align: center;
 
   border-radius: 0.5em;
@@ -121,3 +126,5 @@ header nav a.active {
 .winning-hamster img {
   max-width: 15em;
 }
+
+/* background-color: #c97b0c; */

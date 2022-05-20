@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react"
 import { Hamster } from '../models/Hamster'
-import { fixUrl } from "../utils"
-import { allImgNames } from "../utils"
-import { useParams } from 'react-router-dom'
+import { fixUrl, allImgNames } from "../utils"
 import AddHamster from "./AddHamster"
 import { Link } from 'react-router-dom'
 import DeleteHamster from "./DeleteHamster"
+import { useRecoilState } from "recoil"
+import HamsterAtom from "../atoms/HamsterAtom"
 
 const Gallery = () => {
-  const [data, setData] = useState<null | Hamster[]>(null)
-  const [hamsterId, setHamsterId] = useState<string>('')
+  const [data, setData] = useRecoilState<null | Hamster[]>(HamsterAtom)
 
   useEffect(() => {
     async function getData() {
@@ -47,5 +46,3 @@ const Gallery = () => {
 
 }
 export default Gallery
-
-// <img src={fixUrl('img/hamster-1.jpg')} />
