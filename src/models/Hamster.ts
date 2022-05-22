@@ -9,5 +9,6 @@ export interface Hamster {
     defeats: number;
     games: number;
     id: string;
+    result: number;
 
 }

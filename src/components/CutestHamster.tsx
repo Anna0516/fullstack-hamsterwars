@@ -9,6 +9,7 @@ const CutestHamster = () => {
   const [cutest, setCutest] = useState<null | Hamster>(null)
 
 
+
   useEffect(() => {
     async function getData() {
       const response: Response = await fetch(fixUrl('/hamsters/'))
@@ -17,35 +18,41 @@ const CutestHamster = () => {
       setData(apiData as Hamster[])
     }
     getData()
-    console.log(data)
+    console.log('data', data)
 
+    if (data !== null) {
+      let sortedArray = data.sort((a, b) => a.result - b.result)
+      setCutest(sortedArray[0])
+    }
+    console.log('cutest', cutest)
   }, [])
+
+
+
 
 
   return (
     <div className="cutest-hamster" >
-      {data ? data?.map(hamster => (
-        <div key={hamster.id} className="hamster">
+      {cutest ?
+        <div key={cutest.id} className="hamster">
           <h2>Den sötaste hamstern är...</h2>
-          <img src={allImgNames(hamster.imgName)} />
-          <h3>{hamster.name}</h3>
+          <img src={allImgNames(cutest.imgName)} />
+          <h3>{cutest.name}</h3>
+          <p>{cutest.result}</p>
         </div>
-      )) : <p>Väntar på hamster</p>}
+        : <p>Väntar på hamster</p>}
     </div>
   )
 }
 
 export default CutestHamster
 
-/*  let difference = hamsters[0].wins - hamsters[0].defeats
-
-  hamsters.forEach((hamster) => {
-    let currentDifference = hamster.wins - hamster.defeats
-
-    if (currentDifference > difference) {
-      difference = currentDifference
-      cutest = [hamster]
-    } else if (currentDifference === difference) {
-      cutest.push(hamster)
+/* let sortedArray = data?.sort((a, b) => a.result - b.result);
+    if (sortedArray !== undefined) {
+      let cutie = sortedArray[0];
+      setCutest(cutie as Hamster)
+      console.log('cutie', cutie)
     }
-  }) */
+
+    console.log('sorted array', sortedArray)
+    console.log('cutest', cutest) */
