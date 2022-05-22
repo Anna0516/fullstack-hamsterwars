@@ -22,6 +22,7 @@ const AddHamster = () => {
     wins: 0,
     defeats: 0,
     games: 0,
+    result: 0,
     id: ''
   }
 
