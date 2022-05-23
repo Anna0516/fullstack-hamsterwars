@@ -8,7 +8,8 @@ const Home = () => (
       <p >Om du alltid längtat efter att få jämföra hamstrar har du kommit alldeles rätt. Må den sötaste hamstern vinna!</p>
     </div>
 
-    <HamsterOfTheDay />
+
+    <CutestHamster />
 
   </div>
 )

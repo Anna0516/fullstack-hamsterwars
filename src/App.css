@@ -37,6 +37,14 @@ body {
 .cutest-hamster p {
   color: white;
 }
+.delete {
+  margin-top: 1.5em;
+}
+.delete-button {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgb(221, 109, 65);
+}
 .footer {
   background-color: #954508;
   position: fixed;
@@ -107,7 +115,9 @@ header nav a.active {
 .home-message {
   color: white;
 }
-
+.info-link {
+  text-decoration: none;
+}
 .single-hamster,
 .winning-hamster {
   color: white;

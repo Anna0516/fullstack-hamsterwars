@@ -21,15 +21,23 @@ const CutestHamster = () => {
     console.log('data', data)
 
     if (data !== null) {
-      let sortedArray = data.sort((a, b) => a.result - b.result)
-      setCutest(sortedArray[0])
+
+      let sortedArray = [...data].sort((a, b) => (a.wins - a.defeats) - (b.wins - b.defeats))
+      let cutie = sortedArray[sortedArray.length - 1]
+      const results = [...sortedArray].filter(obj => {
+        return (obj.wins - obj.defeats) === (cutie.wins - cutie.defeats)
+      })
+      let resLength = results.length
+      if (resLength > 0) {
+        let randomCutie = results[Math.floor(Math.random() * results.length)]
+        setCutest(randomCutie)
+      } else {
+        setCutest(cutie)
+      }
+
     }
     console.log('cutest', cutest)
   }, [])
-
-
-
-
 
   return (
     <div className="cutest-hamster" >
@@ -38,21 +46,39 @@ const CutestHamster = () => {
           <h2>Den sötaste hamstern är...</h2>
           <img src={allImgNames(cutest.imgName)} />
           <h3>{cutest.name}</h3>
-          <p>{cutest.result}</p>
+          <p>Rating: {cutest.wins - cutest.defeats} poäng</p>
+          <p>Antal vinster: {cutest.wins}</p>
+          <p>Antal förluster: {cutest.defeats}</p>
         </div>
-        : <p>Väntar på hamster</p>}
+
+
+        : <p>Väntar på sötaste hamstern...</p>}
     </div>
   )
 }
 
 export default CutestHamster
 
-/* let sortedArray = data?.sort((a, b) => a.result - b.result);
-    if (sortedArray !== undefined) {
-      let cutie = sortedArray[0];
-      setCutest(cutie as Hamster)
-      console.log('cutie', cutie)
-    }
+/* Array.sort((a, b) => a.resultat - b.resultat)
 
-    console.log('sorted array', sortedArray)
-    console.log('cutest', cutest) */
+ if (data !== null) {
+      let sortedArray = [...data].sort((a, b) => a.result - b.result)
+      setCutest(sortedArray[sortedArray.length - 1])
+    }
+    console.log('cutest', cutest)
+
+
+
+     {data ? [...data].sort((a, b) => a.result - b.result)
+        .map((cutest) => (
+          <div key={cutest.id} className="hamster">
+            <h2>Den sötaste hamstern är...</h2>
+            <img src={allImgNames(cutest.imgName)} />
+            <h3>{cutest.name}</h3>
+            <p>{cutest.result}</p>
+          </div>
+        ))
+
+        : <p>Väntar på sötaste hamstern...</p>}
+
+*/

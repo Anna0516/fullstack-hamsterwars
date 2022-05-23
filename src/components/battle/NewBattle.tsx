@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { fixUrl, allImgNames } from "../../utils"
 import { Hamster } from "../../models/Hamster"
 
+
 const NewBattle = () => {
   const [firstHamster, setFirstHamster] = useState<null | Hamster>(null)
   const [secondHamster, setSecondHamster] = useState<null | Hamster>(null)
@@ -9,6 +10,7 @@ const NewBattle = () => {
   const [looser, setLooser] = useState<null | Hamster>(null)
   const [doesExist1, setDoesExist1] = useState<boolean>(false)
   const [doesExist2, setDoesExist2] = useState<boolean>(false)
+
 
   //Röstar på nr 1
   const winningHamsterFirst = () => {
@@ -175,11 +177,11 @@ const NewBattle = () => {
       {winner != null ? //Visar vinnaren
         <div className="winning-hamster">
           <h2>Vi har en vinnare!</h2>
-          <button onClick={StartNewGame}>Ny match</button>
+
           <img src={allImgNames(winner.imgName)} />
           <p>{winner.name} är  {winner.age} år, äter {winner.favFood}, och älskar att {winner.loves}.</p>
           <p>({winner.wins} vinst/er, {winner.defeats} förlust/er, {winner.games} match/er)</p>
-
+          <button onClick={StartNewGame}>Starta ny match</button>
         </div>
 
         : <p className="message">Inväntar resultat</p>}

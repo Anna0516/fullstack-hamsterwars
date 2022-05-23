@@ -33,8 +33,10 @@ const Gallery = () => {
 
           <h3>{hamster.name}</h3>
           <p>Ålder: {hamster.age} år</p>
-          <Link to={'/singlehamster/' + hamster.id}>Mer info</Link>
+          <Link className="info-link" to={'/singlehamster/' + hamster.id}>Mer info</Link>
+
           <DeleteHamster hamsterid={hamster.id} />
+
         </div>
 
       )) : <p>Väntar på hamstrar</p>}

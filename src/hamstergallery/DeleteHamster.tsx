@@ -34,8 +34,8 @@ const DeleteHamster = ({ hamsterid }: Props) => {
   }
 
   return (
-    <div className="delete-button">
-      <button onClick={deleteHamster}> ⚠️ Radera hamster</button>
+    <div className='delete'>
+      <button className='delete-button' onClick={deleteHamster}> ⚠️ Radera hamster</button>
     </div>
   )
 }
