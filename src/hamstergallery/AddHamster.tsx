@@ -66,10 +66,15 @@ const AddHamster = () => {
     <div className='add-hamster'>
       <h3>Lägg till en ny hamster!</h3>
       <input type="text" placeholder='Hamsterns namn' onChange={event => setName(event.target.value)} value={name} />
+      {nameIsValid === false ? <p>Skriv ett namn på hamstern</p> : <p>✅</p>}
       <input type="text" placeholder='Hamsterns ålder' onChange={event => setAge(event.target.value)} value={age} />
+      {ageIsValid === false ? <p>Skriv hamsterns ålder i hela år (med siffror)</p> : <p>✅</p>}
       <input type="text" placeholder='Hamsterns favoritmat' onChange={event => setFavFood(event.target.value)} value={favFood} />
+      {favFoodIsValid === false ? <p>Skriv vad din hamster helst äter</p> : <p>✅</p>}
       <input type="text" placeholder='Hamstern älskar...' onChange={event => setLoves(event.target.value)} value={loves} />
+      {lovesIsValid === false ? <p>Skriv vad hamstern gillar att göra</p> : <p>✅</p>}
       <input type="text" placeholder='Bild url' onChange={event => setImgName(event.target.value)} value={imgName} />
+      {imgNameIsValid === false ? <p>Skriv bildadressen, t ex https://minbild.com </p> : <p>✅</p>}
       <div>
         <button disabled={!formIsValid} onClick={handleAddHamster}>Lägg till hamster!</button>
       </div>

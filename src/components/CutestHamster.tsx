@@ -43,7 +43,7 @@ const CutestHamster = () => {
     <div className="cutest-hamster" >
       {cutest ?
         <div key={cutest.id} className="hamster">
-          <h2>Den sötaste hamstern är...</h2>
+          <h2>Den sötaste hamstern just nu är...</h2>
           <img src={allImgNames(cutest.imgName)} />
           <h3>{cutest.name}</h3>
           <p>Rating: {cutest.wins - cutest.defeats} poäng</p>
@@ -52,33 +52,9 @@ const CutestHamster = () => {
         </div>
 
 
-        : <p>Väntar på sötaste hamstern...</p>}
+        : <p>Väntar på sötaste hamstern...Testa att ladda om sidan, eller kom tillbaka lite senare.</p>}
     </div>
   )
 }
 
 export default CutestHamster
-
-/* Array.sort((a, b) => a.resultat - b.resultat)
-
- if (data !== null) {
-      let sortedArray = [...data].sort((a, b) => a.result - b.result)
-      setCutest(sortedArray[sortedArray.length - 1])
-    }
-    console.log('cutest', cutest)
-
-
-
-     {data ? [...data].sort((a, b) => a.result - b.result)
-        .map((cutest) => (
-          <div key={cutest.id} className="hamster">
-            <h2>Den sötaste hamstern är...</h2>
-            <img src={allImgNames(cutest.imgName)} />
-            <h3>{cutest.name}</h3>
-            <p>{cutest.result}</p>
-          </div>
-        ))
-
-        : <p>Väntar på sötaste hamstern...</p>}
-
-*/

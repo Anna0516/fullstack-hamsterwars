@@ -1,3 +1,20 @@
+.add-hamster p {
+  font-size: small;
+  font-style: italic;
+}
+.add-hamster input {
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+.add-hamster button {
+  border-radius: 0.5em;
+  padding: 0.4em;
+  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
+}
+.add-hamster button:active {
+  transform: translateY(0.4em);
+  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
+}
 .battle {
   float: right;
   min-width: 60vw;
@@ -16,15 +33,23 @@
   transform: translateY(0.4em);
   box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
 }
-
+.battle-instructions {
+  color: white;
+  max-width: 50vh;
+}
 .battle .message {
-  background-color: #c97b0c;
+  background: radial-gradient(
+    circle,
+    rgb(175, 120, 79) 0%,
+    rgb(209, 162, 87) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
   text-align: center;
   max-width: 20em;
   border-radius: 0.5em;
   padding: 1em;
-  display: block;
-  margin-left: 25vh;
+
+  margin-top: 15vh;
 }
 .battle .voting {
   display: flex;
@@ -35,7 +60,7 @@ body {
   background-size: cover;
 }
 .cutest-hamster p {
-  color: white;
+  color: black;
 }
 .delete {
   margin-top: 1.5em;
@@ -44,6 +69,11 @@ body {
   padding: 0.5em;
   border-radius: 0.5em;
   background-color: rgb(221, 109, 65);
+  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
+}
+.delete-button button:active {
+  transform: translateY(0.4em);
+  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
 }
 .footer {
   background-color: #954508;
@@ -74,8 +104,8 @@ body {
 .add-hamster {
   background: radial-gradient(
     circle,
-    rgba(149, 69, 8, 1) 0%,
-    rgba(201, 123, 0, 1) 35%,
+    rgb(175, 120, 79) 0%,
+    rgb(209, 162, 87) 35%,
     rgba(255, 255, 255, 1) 100%
   );
   text-align: center;
@@ -85,7 +115,7 @@ body {
 }
 
 header {
-  background-color: #954508;
+  background-color: black;
 }
 header,
 main {
@@ -115,13 +145,22 @@ header nav a.active {
 .home-message {
   color: white;
 }
+img {
+  border-radius: 0.5em;
+}
 .info-link {
   text-decoration: none;
 }
+
 .single-hamster,
 .winning-hamster {
-  color: white;
-  background-color: #c97b0c;
+  color: black;
+  background: radial-gradient(
+    circle,
+    rgb(175, 120, 79) 0%,
+    rgb(209, 162, 87) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
   text-align: center;
   border-radius: 0.5em;
   padding: 1em;

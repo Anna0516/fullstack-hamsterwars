@@ -2,15 +2,13 @@ import { useState, useEffect } from "react"
 import { fixUrl, allImgNames } from "../../utils"
 import { Hamster } from "../../models/Hamster"
 
-
 const NewBattle = () => {
   const [firstHamster, setFirstHamster] = useState<null | Hamster>(null)
   const [secondHamster, setSecondHamster] = useState<null | Hamster>(null)
   const [winner, setWinner] = useState<null | Hamster>(null)
   const [looser, setLooser] = useState<null | Hamster>(null)
-  const [doesExist1, setDoesExist1] = useState<boolean>(false)
-  const [doesExist2, setDoesExist2] = useState<boolean>(false)
-
+  const [hasVoted1, setHasVoted1] = useState<boolean>(false)
+  const [hasVoted2, setHasVoted2] = useState<boolean>(false)
 
   //Röstar på nr 1
   const winningHamsterFirst = () => {
@@ -28,7 +26,7 @@ const NewBattle = () => {
         result: newResult
       }
       setWinner(putWinData)
-      setDoesExist1(true) //ser till så att röstknappen blir disabled efter röstning
+      setHasVoted1(true) //ser till så att röstknappen blir disabled efter röstning
 
       fetch(fixUrl(`/hamsters/${firstHamster.id}`), {
         method: 'PUT',
@@ -78,7 +76,7 @@ const NewBattle = () => {
         result: newResult
       }
       setWinner(putWinData)
-      setDoesExist2(true) //ser till så att röstknappen blir disabled efter röstning
+      setHasVoted2(true) //ser till så att röstknappen blir disabled efter röstning
 
       fetch(fixUrl(`/hamsters/${secondHamster.id}`), {
         method: 'PUT',
@@ -114,11 +112,7 @@ const NewBattle = () => {
       console.log('hamster 1 updated')
     }
   }
-  //Startar ny match
 
-  const StartNewGame = () => {
-    window.location.reload();
-  }
   //Hämtar första random hamster
   useEffect(() => {
     async function getData() {
@@ -141,50 +135,86 @@ const NewBattle = () => {
     getData()
 
   }, [])
+  //Startar ny spelomgång
+  const StartNewGame = () => {
+    setFirstHamster(null)
+    setSecondHamster(null)
+    setWinner(null)
+    setLooser(null)
+    setHasVoted1(false)
+    setHasVoted2(false)
+
+    //Hämtar ny första random hamster
+
+    async function getData1() {
+      const response: Response = await fetch(fixUrl('/hamsters/random'))
+      const apiData: any = await response.json()
+
+      setFirstHamster(apiData as Hamster)
+    }
+    getData1()
+    console.log('ny match h1')
+
+    //Hämtar ny andra random hamster
+
+    async function getData2() {
+      const response: Response = await fetch(fixUrl('/hamsters/random'))
+      const apiData: any = await response.json()
+
+      setSecondHamster(apiData as Hamster)
+    }
+    getData2()
+    console.log('ny match h2')
+  }
 
   return (
     <div className="battle">
-      <div className="voting">
-        {firstHamster && secondHamster ? //Tävlande nr 1
-          <div className="hamster">
-            <img src={allImgNames(firstHamster.imgName)} />
-            <h3>{firstHamster.name}</h3>
-            {doesExist1 ? <div>
-              <p>Vinster: {winner?.wins}</p>
-              <p>Förluster: {winner?.defeats}</p> </div> : null}
-            {doesExist2 ? <div>
-              <p>Vinster: {looser?.wins}</p>
-              <p>Förluster: {looser?.defeats}</p> </div> : null}
-            <button disabled={doesExist1 || doesExist2} onClick={winningHamsterFirst}>Rösta!</button>
-          </div> : <p>Hamster nr 1 förbereder sig...</p>
-        }
-
-        {firstHamster && secondHamster ? //Tävlande nr 2
-          <div className="hamster">
-            <img src={allImgNames(secondHamster.imgName)} />
-            <h3>{secondHamster.name}</h3>
-            {doesExist2 ? <div>
-              <p>Vinster: {winner?.wins}</p>
-              <p>Förluster: {winner?.defeats}</p> </div> : null}
-            {doesExist1 ? <div>
-              <p>Vinster: {looser?.wins}</p>
-              <p>Förluster: {looser?.defeats}</p> </div> : null}
-            <button disabled={doesExist1 || doesExist2} onClick={winningHamsterSecond}>Rösta!</button>
-          </div> : <p>Hamster nr 2 förbereder sig...</p>
-        }
+      <div className="battle-instructions">
+        <h2>Dags att tävla!</h2>
+        <p>Rösta på din favorit genom att trycka på röstningsknappen under den hamster du tycker är sötast. Resultatet av matchen kommer att visas, och du ges möjlighet att starta en ny match.</p>
       </div>
+      <div className="voting">
+        {firstHamster && secondHamster ? //Tävlande nr 1 och 2
+          <>
+            <div className="hamster">
+              <img src={allImgNames(firstHamster.imgName)} />
+              <h3>{firstHamster.name}</h3>
+              {hasVoted1 ? <div>
+                <p>Vinster: {winner?.wins}</p>
+                <p>Förluster: {winner?.defeats}</p> </div> : null}
+              {hasVoted2 ? <div>
+                <p>Vinster: {looser?.wins}</p>
+                <p>Förluster: {looser?.defeats}</p> </div> : null}
+              <button disabled={hasVoted1 || hasVoted2} onClick={winningHamsterFirst}>Rösta!</button>
+            </div>
 
-      {winner != null ? //Visar vinnaren
-        <div className="winning-hamster">
-          <h2>Vi har en vinnare!</h2>
+            <div className="hamster">
+              <img src={allImgNames(secondHamster.imgName)} />
+              <h3>{secondHamster.name}</h3>
+              {hasVoted2 ? <div>
+                <p>Vinster: {winner?.wins}</p>
+                <p>Förluster: {winner?.defeats}</p> </div> : null}
+              {hasVoted1 ? <div>
+                <p>Vinster: {looser?.wins}</p>
+                <p>Förluster: {looser?.defeats}</p> </div> : null}
+              <button disabled={hasVoted1 || hasVoted2} onClick={winningHamsterSecond}>Rösta!</button>
+            </div>
+          </> : <p>Hamster nr 1 och 2 förbereder sig...</p>
+        }
 
-          <img src={allImgNames(winner.imgName)} />
-          <p>{winner.name} är  {winner.age} år, äter {winner.favFood}, och älskar att {winner.loves}.</p>
-          <p>({winner.wins} vinst/er, {winner.defeats} förlust/er, {winner.games} match/er)</p>
-          <button onClick={StartNewGame}>Starta ny match</button>
-        </div>
 
-        : <p className="message">Inväntar resultat</p>}
+        {winner != null ? //Visar vinnaren
+          <div className="winning-hamster">
+            <h2>Vi har en vinnare!</h2>
+
+            <img src={allImgNames(winner.imgName)} />
+            <p>{winner.name} är  {winner.age} år, äter {winner.favFood}, och älskar att {winner.loves}.</p>
+            <p>({winner.wins} vinst/er, {winner.defeats} förlust/er, {winner.games} match/er)</p>
+            <button onClick={StartNewGame}>Starta ny match</button>
+          </div>
+
+          : <div> <p className="message">Inväntar resultat</p> </div>}
+      </div>
     </div>
   )
 }
