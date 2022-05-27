@@ -18,13 +18,11 @@ const NewBattle = () => {
     if (firstHamster != null) {
       let newWins = firstHamster.wins + 1 //lägger till vinster, matcher
       let newGames = firstHamster.games + 1
-      let newResult = firstHamster.wins - firstHamster.defeats
 
       const putWinData = {
         ...firstHamster,
         wins: newWins,
         games: newGames,
-        result: newResult
       }
       setWinner(putWinData)
       setHasVoted1(true) //ser till så att röstknappen blir disabled efter röstning
@@ -41,13 +39,11 @@ const NewBattle = () => {
     if (secondHamster != null) {
       let newDefeats = secondHamster.defeats + 1 //lägger till förluster/matcher
       let newGames = secondHamster.games + 1
-      let newResult = secondHamster.wins - secondHamster.defeats
 
       const putDefeatData = {
         ...secondHamster,
         defeats: newDefeats,
         games: newGames,
-        result: newResult
       }
       setLooser(putDefeatData)
 
@@ -68,13 +64,11 @@ const NewBattle = () => {
     if (secondHamster != null) {
       let newWins = secondHamster.wins + 1 //lägger till vinster/matcher
       let newGames = secondHamster.games + 1
-      let newResult = secondHamster.wins - secondHamster.defeats
 
       const putWinData = {
         ...secondHamster,
         wins: newWins,
         games: newGames,
-        result: newResult
       }
       setWinner(putWinData)
       setHasVoted2(true) //ser till så att röstknappen blir disabled efter röstning
@@ -85,20 +79,17 @@ const NewBattle = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(putWinData),
-
       })
       console.log('hamster 2 updated')
     }
     if (firstHamster != null) {
       let newDefeats = firstHamster.defeats + 1 //lägger till förluster/matcher
       let newGames = firstHamster.games + 1
-      let newResult = firstHamster.wins - firstHamster.defeats
 
       const putDefeatData = {
         ...firstHamster,
         defeats: newDefeats,
         games: newGames,
-        result: newResult
       }
       setLooser(putDefeatData)
 
@@ -108,7 +99,6 @@ const NewBattle = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(putDefeatData),
-
       })
       console.log('hamster 1 updated')
     }
@@ -202,8 +192,6 @@ const NewBattle = () => {
             </div>
           </> : <p>Hamster nr 1 och 2 förbereder sig...</p>
         }
-
-
         {winner != null ? //Visar vinnaren
           <div className="winning-hamster">
             <h2>Vi har en vinnare!</h2>
@@ -213,7 +201,6 @@ const NewBattle = () => {
             <p>({winner.wins} vinst/er, {winner.defeats} förlust/er, {winner.games} match/er)</p>
             <button onClick={StartNewGame}>Starta ny match</button>
           </div>
-
           : <div> <p className="message">Inväntar resultat</p> </div>}
       </div>
     </div>

@@ -8,8 +8,6 @@ const CutestHamster = () => {
   const [data, setData] = useRecoilState<null | Hamster[]>(HamsterAtom)
   const [cutest, setCutest] = useState<null | Hamster>(null)
 
-
-
   useEffect(() => {
     async function getData() {
       const response: Response = await fetch(fixUrl('/hamsters/'))
@@ -50,7 +48,6 @@ const CutestHamster = () => {
           <p>Antal vinster: {cutest.wins}</p>
           <p>Antal förluster: {cutest.defeats}</p>
         </div>
-
 
         : <p>Väntar på sötaste hamstern...Testa att ladda om sidan, eller kom tillbaka lite senare.</p>}
     </div>

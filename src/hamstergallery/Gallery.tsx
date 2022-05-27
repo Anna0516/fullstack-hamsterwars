@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { Hamster } from '../models/Hamster'
 import { fixUrl, allImgNames } from "../utils"
 import AddHamster from "./AddHamster"
@@ -41,11 +41,7 @@ const Gallery = () => {
         </div>
 
       )) : <p>Väntar på hamstrar</p>}
-
-
     </div>
-
   )
-
 }
 export default Gallery

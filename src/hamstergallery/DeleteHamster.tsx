@@ -31,9 +31,7 @@ const DeleteHamster = ({ hamsterid }: Props) => {
       }
       getData()
     }
-
   }
-
   return (
     <div className='delete'>
       <button className='delete-button' onClick={deleteHamster}> ⚠️ Radera hamster</button>

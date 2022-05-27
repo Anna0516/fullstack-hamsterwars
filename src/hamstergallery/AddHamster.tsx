@@ -33,8 +33,6 @@ const AddHamster = () => {
   const imgNameIsValid = newHamster.imgName !== ''
   const formIsValid = nameIsValid && ageIsValid && favFoodIsValid && lovesIsValid && imgNameIsValid
 
-  //användarvänliga felmeddelanden?
-
   const handleAddHamster = async () => {
 
     const response: Response = await fetch(fixUrl('/hamsters'), {

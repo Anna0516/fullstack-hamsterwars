@@ -1,15 +1,12 @@
-import { useState } from 'react'
 import { NavLink, Routes, Route } from 'react-router-dom'
 import Home from './components/Home'
 import BattlePage from './components/battle/BattlePage'
 import Gallery from './hamstergallery/Gallery'
-
 import Footer from './components/Footer'
 import './App.css'
 import SingleHamster from './components/SingleHamster'
 
 const App = () => {
-
 
   return (
     <div className='app'>
@@ -18,7 +15,6 @@ const App = () => {
           <NavLink to="/" > Hem </NavLink>
           <NavLink to="/battle" > Tävla </NavLink>
           <NavLink to="/gallery" > Galleri </NavLink>
-
         </nav>
       </header>
       <main>

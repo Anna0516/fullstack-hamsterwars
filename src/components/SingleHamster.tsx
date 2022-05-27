@@ -1,6 +1,5 @@
 import { Hamster } from "../models/Hamster"
 import { useParams } from "react-router-dom"
-import { Navigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { fixUrl, allImgNames } from "../utils"
 
@@ -22,7 +21,6 @@ const SingleHamster = () => {
   return (
     <div className="single-hamster">
       {singleHamster ?
-
         <>
           <img src={allImgNames(singleHamster.imgName)} />
           <h3>{singleHamster.name}</h3>

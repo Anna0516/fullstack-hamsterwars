@@ -1,6 +1,5 @@
 import NewBattle from './NewBattle'
 
-
 const BattlePage = () => (
   <div className="battle">
     <NewBattle />

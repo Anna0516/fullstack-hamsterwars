@@ -6,7 +6,6 @@ body {
 .cutest-hamster p {
   color: black;
 }
-
 .footer {
   background-color: #954508;
   position: fixed;
@@ -17,12 +16,10 @@ body {
   text-align: center;
   color: white;
 }
-
 .hamster img {
   width: 8em;
   height: 8em;
 }
-
 .hamster,
 .add-hamster {
   background: radial-gradient(
@@ -74,7 +71,6 @@ img {
 .info-link {
   text-decoration: none;
 }
-
 .single-hamster,
 .winning-hamster {
   color: black;
