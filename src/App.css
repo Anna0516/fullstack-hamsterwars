@@ -1,59 +1,3 @@
-.add-hamster p {
-  font-size: small;
-  font-style: italic;
-}
-.add-hamster input {
-  border-radius: 0.5em;
-  padding: 0.2em;
-}
-.add-hamster button {
-  border-radius: 0.5em;
-  padding: 0.4em;
-  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
-}
-.add-hamster button:active {
-  transform: translateY(0.4em);
-  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
-}
-.battle {
-  float: right;
-  min-width: 60vw;
-}
-.battle .hamster {
-  margin: 2em;
-  min-width: 20em;
-}
-
-.battle button {
-  border-radius: 0.5em;
-  padding: 1em;
-  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
-}
-.battle button:active {
-  transform: translateY(0.4em);
-  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
-}
-.battle-instructions {
-  color: white;
-  max-width: 50vh;
-}
-.battle .message {
-  background: radial-gradient(
-    circle,
-    rgb(175, 120, 79) 0%,
-    rgb(209, 162, 87) 35%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  text-align: center;
-  max-width: 20em;
-  border-radius: 0.5em;
-  padding: 1em;
-
-  margin-top: 15vh;
-}
-.battle .voting {
-  display: flex;
-}
 body {
   background-image: url('./images/hamsterbg1.jpg');
   height: 100vh;
@@ -62,19 +6,7 @@ body {
 .cutest-hamster p {
   color: black;
 }
-.delete {
-  margin-top: 1.5em;
-}
-.delete-button {
-  padding: 0.5em;
-  border-radius: 0.5em;
-  background-color: rgb(221, 109, 65);
-  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
-}
-.delete-button button:active {
-  transform: translateY(0.4em);
-  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
-}
+
 .footer {
   background-color: #954508;
   position: fixed;
@@ -86,15 +18,6 @@ body {
   color: white;
 }
 
-.gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 1em;
-  margin-bottom: 2em;
-}
-.gallery .hamster:hover {
-  transform: translateY(0.4em);
-}
 .hamster img {
   width: 8em;
   height: 8em;
@@ -169,14 +92,3 @@ img {
 .single-hamster img {
   max-width: 15em;
 }
-
-.winning-hamster {
-  margin-bottom: 3em;
-  margin-left: 25vh;
-}
-
-.winning-hamster img {
-  max-width: 15em;
-}
-
-/* background-color: #c97b0c; */

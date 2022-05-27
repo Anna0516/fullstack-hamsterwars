@@ -2,6 +2,7 @@ import { fixUrl } from '../utils'
 import { Hamster } from '../models/Hamster'
 import { useRecoilState } from 'recoil'
 import HamsterAtom from '../atoms/HamsterAtom'
+import './Gallery.css'
 
 interface Props {
   hamsterid: string;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { fixUrl, allImgNames } from "../../utils"
 import { Hamster } from "../../models/Hamster"
+import './Battle.css'
 
 const NewBattle = () => {
   const [firstHamster, setFirstHamster] = useState<null | Hamster>(null)

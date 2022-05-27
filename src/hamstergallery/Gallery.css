@@ -1,0 +1,41 @@
+.add-hamster p {
+  font-size: small;
+  font-style: italic;
+}
+.add-hamster input {
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+.add-hamster button {
+  border-radius: 0.5em;
+  padding: 0.4em;
+  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
+}
+.add-hamster button:active {
+  transform: translateY(0.4em);
+  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
+}
+
+.delete {
+  margin-top: 1.5em;
+}
+.delete-button {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  background-color: rgb(221, 109, 65);
+  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
+}
+.delete-button button:active {
+  transform: translateY(0.4em);
+  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+.gallery .hamster:hover {
+  transform: translateY(0.4em);
+}

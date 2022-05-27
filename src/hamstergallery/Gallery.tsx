@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import DeleteHamster from "./DeleteHamster"
 import { useRecoilState } from "recoil"
 import HamsterAtom from "../atoms/HamsterAtom"
+import './Gallery.css'
 
 const Gallery = () => {
   const [data, setData] = useRecoilState<null | Hamster[]>(HamsterAtom)

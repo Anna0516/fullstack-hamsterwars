@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { fixUrl } from '../utils'
 import { useRecoilState } from 'recoil'
 import HamsterAtom from '../atoms/HamsterAtom'
-
+import './Gallery.css'
 
 const AddHamster = () => {
   const [name, setName] = useState<string>('')

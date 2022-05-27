@@ -1,0 +1,48 @@
+.battle {
+  float: right;
+  min-width: 60vw;
+}
+.battle .hamster {
+  margin: 2em;
+  min-width: 20em;
+}
+
+.battle button {
+  border-radius: 0.5em;
+  padding: 1em;
+  box-shadow: 0.4em 0.4em 0.5em rgb(48, 47, 47);
+}
+.battle button:active {
+  transform: translateY(0.4em);
+  box-shadow: 0.1em 0.1em 0.1em rgb(48, 47, 47);
+}
+.battle-instructions {
+  color: white;
+  max-width: 50vh;
+}
+.battle .message {
+  background: radial-gradient(
+    circle,
+    rgb(175, 120, 79) 0%,
+    rgb(209, 162, 87) 35%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  text-align: center;
+  max-width: 20em;
+  border-radius: 0.5em;
+  padding: 1em;
+
+  margin-top: 15vh;
+}
+.battle .voting {
+  display: flex;
+}
+
+.winning-hamster {
+  margin-bottom: 3em;
+  margin-left: 25vh;
+}
+
+.winning-hamster img {
+  max-width: 15em;
+}
